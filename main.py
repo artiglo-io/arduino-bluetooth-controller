@@ -12,6 +12,8 @@ root = Tk()
 root.title(f"{APPLICATION_NAME} - {APPLICATION_VERSION}")
 root.resizable(WINDOW_RESIZEABLE, WINDOW_RESIZEABLE)
 root.grid_columnconfigure(0, weight=1)
+root.grid_columnconfigure(1, weight=1)
+root.grid_columnconfigure(2, weight=1)
 
 if "posix" == os.name:
     datafile = load_icon(ICON_PATH_LINUX)
@@ -39,7 +41,7 @@ connect_button.grid(row=3, column=0, sticky="ew", padx=10, pady=(0, 10), columns
 
 top_button = Button(root, text="Forward", command=lambda: send_message("1", output, outputLabel), state="disabled",
                     width=10, height=1, repeatdelay=100, repeatinterval=100)
-top_button.grid(row=4, column=0, pady=(10, 0), columnspan=3)
+top_button.grid(row=4, column=1,  padx=5, pady=5, sticky="ew")
 
 left_button = Button(root, text="Left", command=lambda: send_message("2", output, outputLabel), state="disabled",
                      width=10, height=1, repeatdelay=100, repeatinterval=100)
@@ -55,7 +57,7 @@ right_button.grid(row=5, column=2, padx=(5, 10), pady=5, sticky="ew")
 
 bottom_button = Button(root, text="Backward", command=lambda: send_message("5", output, outputLabel), state="disabled",
                        width=10, height=1, repeatdelay=100, repeatinterval=100)
-bottom_button.grid(row=6, column=0, columnspan=3, pady=(0, 10))
+bottom_button.grid(row=6, column=1, padx=5, pady=5, sticky="ew")
 
 keyboard_info = Label(root, text="Use WASD and space to control the car.", width=40, height=1, borderwidth=1,
                       relief="solid",
