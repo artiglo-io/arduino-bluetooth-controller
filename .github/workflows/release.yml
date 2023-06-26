@@ -6,8 +6,10 @@ on:
 
 jobs:
   build_and_release:
-    name: Build and Release
-    runs-on: ubuntu-20.04
+    name: Build and Release on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    matrix:
+      os: [ubuntu-20.04, windows-2022]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -17,7 +19,8 @@ jobs:
         with:
           python-version: 3.8
 
-      - name: Install prerequisites
+      - name: Install prerequisites (Linux)
+        if: matrix.os == 'ubuntu-20.04'
         run: |
           sudo apt-get update
           sudo apt-get install libbluetooth-dev -y
@@ -29,14 +32,9 @@ jobs:
           pip install -r requirements.txt
           python -m pip install -e git+https://github.com/pybluez/pybluez.git#egg=pybluez
 
-      - name: Build for Linux
+      - name: Build for ${{ matrix.os }}
         run: |
           pyinstaller arduino-bluetooth-controller.spec
-
-      - name: Build for Windows
-        uses: JackMcKew/pyinstaller-action-windows@main
-        with:
-          path: .
 
       - name: Release
         uses: softprops/action-gh-release@v1
