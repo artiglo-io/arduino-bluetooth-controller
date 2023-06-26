@@ -9,8 +9,9 @@ jobs:
   build:
     name: Build on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    matrix:
-      os: [ubuntu-20.04, windows-2022]
+    strategy:
+      matrix:
+        os: [ubuntu-20.04, windows-2022]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
