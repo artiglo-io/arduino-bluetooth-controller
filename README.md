@@ -5,6 +5,13 @@ Shield Rev1.
 It is written in Python 3.8 and uses pyBluez to communicate with the Arduino. It is compiled to an executable using
 PyInstaller.
 
+# UI Design
+![ui-windows](./docs/assets/ui-windows.png?raw=true "Title")
+UI design may be different on other platforms.
+
+# Arduino Setup
+
+
 # Install pyBluez
 
 Due to a bug in the latest version of pyBluez, we need to install it from the git repository.
