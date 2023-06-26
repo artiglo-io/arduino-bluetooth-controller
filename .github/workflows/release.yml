@@ -1,0 +1,46 @@
+name: Release Build
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build_and_release:
+    name: Build and Release
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python 3.8
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
+
+      - name: Install prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install libbluetooth-dev -y
+
+      - name: Install dependencies
+        run: |
+          python --version
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          python -m pip install -e git+https://github.com/pybluez/pybluez.git#egg=pybluez
+
+      - name: Build for Linux
+        run: |
+          pyinstaller arduino-bluetooth-controller.spec
+
+      - name: Build for Windows
+        uses: JackMcKew/pyinstaller-action-windows@main
+        with:
+          path: .
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            ./dist/windows/arduino-bluetooth-controller.exe
+            ./dist/arduino-bluetooth-controller

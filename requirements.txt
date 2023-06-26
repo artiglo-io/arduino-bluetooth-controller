@@ -1,0 +1,4 @@
+setuptools~=68.0.0
+wheel~=0.40.0
+keyboard~=0.13.5
+pyinstaller~=5.12.0
