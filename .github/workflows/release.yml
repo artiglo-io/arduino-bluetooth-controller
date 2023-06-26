@@ -41,5 +41,5 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            ./dist/windows/arduino-bluetooth-controller.exe
+            ./dist/arduino-bluetooth-controller.exe
             ./dist/arduino-bluetooth-controller
