@@ -44,16 +44,17 @@ def switch_button_text(button: Button, text: str):
     button["text"] = text
 
 
-def find_blt(output: StringVar, outputLabel: Label, devices_list: Listbox, connect_button: Button,
-             find_blt_button: Button, control_buttons):
+def find_blt(output, outputLabel, devices_list, connect_button,
+             find_blt_button, control_buttons):
     """
     Tkinter command to find bluetooth devices
-    :param find_blt_button:
+
     :param control_buttons:
+    :param find_blt_button:
     :param connect_button:
-    :param output:
-    :param outputLabel:
     :param devices_list:
+    :param output:
+    :type outputLabel:
     :return:
     """
     switch_button(find_blt_button, "disabled")
