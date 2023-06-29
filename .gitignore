@@ -3,5 +3,8 @@
 build
 dist
 venv
-src
+/src
 __pycache__
+.pio
+CMakeListsPrivate.txt
+cmake-build-*/
