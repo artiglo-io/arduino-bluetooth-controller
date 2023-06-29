@@ -11,7 +11,7 @@ PyInstaller.
 UI design may be different on other platforms.
 
 # Arduino Setup
-Sample code for Arduino is in the `docs/arduino` directory. It is written in C++ (Arduino) and uses the Arduino Motor Shield Rev1.
+Sample code for Arduino is in the `docs/code/arduino` directory. It is written in C++ (Arduino) and uses the Arduino Motor Shield Rev1.
 
 # Install pyBluez
 
